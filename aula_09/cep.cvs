@@ -1,0 +1,5 @@
+;cep;logradouro;complemento;unidade;bairro;localidade;uf;estado;regiao;ibge;gia;ddd;siafi
+0;25065-160;Rua Vereador Oscar Dias Oliveira;;;Vila São Sebastião;Duque de Caxias;RJ;Rio de Janeiro;Sudeste;3301702;;21;5833
+1;25080-700;Praça Carlos de Laet;;;Chacrinha;Duque de Caxias;RJ;Rio de Janeiro;Sudeste;3301702;;21;5833
+2;25065-260;Rua Álvares Lobo;;;Chacrinha;Duque de Caxias;RJ;Rio de Janeiro;Sudeste;3301702;;21;5833
+3;25051-100;Rua Cananéia;;;Chacrinha;Duque de Caxias;RJ;Rio de Janeiro;Sudeste;3301702;;21;5833
