@@ -1,2 +1,5 @@
-SELECT IdCliente FROM clientes
+SELECT IdCliente,
+DtCriacao,
+DtAtualizacao
+FROM clientes
 LIMIT 10

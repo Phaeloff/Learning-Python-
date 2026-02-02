@@ -1,0 +1,5 @@
+SELECT *
+
+FROM CLIENTES
+
+WHERE QtdePontos >= 500

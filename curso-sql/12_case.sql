@@ -1,0 +1,23 @@
+--INTERVALOS
+-- DE 0 A 1000  ->  PONTUACAO BAIXA
+-- DE 1001 A 5000  ->  PONTUACAO MEDIA
+-- DE 5001 A 10000  ->  PONTUACAO ALTA
+-- ACIMA DE 10000  ->  PONTUACAO VIP
+
+SELECT idCliente,
+        QtdePontos,
+        CASE
+            --WHEN QtdePontos BETWEEN 0 AND 1000 THEN 'PONTUACAO DOIDA'
+            --WHEN QtdePontos BETWEEN 1001 AND 5000 THEN 'PONTUACAO MEDIADIONADA'
+            --WHEN QtdePontos BETWEEN 5001 AND 10000 THEN 'PONTUACAO DO SAFADO'
+            --ELSE 'PONTUACAO RICO DESGRAÇADO'
+            WHEN QtdePontos <= 500 THEN 'PONTUACAO BAIXA'
+            WHEN QtdePontos > 500 AND QtdePontos <= 1000 THEN 'PONTUACAO BAIXA'
+            WHEN QtdePontos > 1000 AND QtdePontos <= 5000 THEN 'PONTUACAO MEDIA'
+            WHEN QtdePontos > 5000 AND QtdePontos <= 10000 THEN 'PONTUACAO ALTA'
+            ELSE 'PONTUACAO VIP'
+        END AS NivelPontuacao
+FROM clientes
+
+ORDER BY QtdePontos DESC;
+
