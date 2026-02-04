@@ -1,4 +1,4 @@
 SELECT *
     
-FROM transacoes
+FROM transacao_produto
 
