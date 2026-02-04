@@ -17,4 +17,4 @@ WHERE t3.DescNomeProduto = 'Lista de presença'
 
 GROUP BY substr(t1.DtCriacao, 1, 7)
 
-ORDER by qtdeTransacoes DESC
+ORDER by total_listas_assinadas DESC
