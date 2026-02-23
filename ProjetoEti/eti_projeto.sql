@@ -84,6 +84,24 @@ tb_cliente_produto_rn AS (
     FROM tb_cliente_produto
 ),
 
+tb_cliente_dia AS (
+
+    SELECT idCliente,
+            strftime('%w', DtCriacao) AS dtDia,
+            count(*) AS qtdTransacao
+
+    FROM tb_transacoes
+    WHERE diffDate <= 28
+    GROUP BY idCliente, dtDia
+),
+
+tb_cliente_dia_rn AS(
+SELECT *,
+    ROW_NUMBER() OVER (PARTITION BY idCliente ORDER BY qtdTransacao DESC) AS rnDia
+
+FROM tb_cliente_dia
+),
+
 tb_join AS (
     SELECT
             t1.*,
@@ -92,7 +110,8 @@ tb_join AS (
             t4.DescNomeProduto AS produtos56,
             t5.DescNomeProduto AS produtos28,
             t6.DescNomeProduto AS produto14,
-            t7.DescNomeProduto AS produto7
+            t7.DescNomeProduto AS produto7,
+            COALESCE(t8.dtDia, -1) AS dtDia
 
     FROM tb_sumario_transacoes AS t1
 
@@ -117,8 +136,10 @@ tb_join AS (
     LEFT JOIN tb_cliente_produto_rn AS t7
     ON t1.idCliente = t7.idCliente AND
     t7.ranking7 = 1
+
+    LEFT JOIN tb_cliente_dia_rn AS t8
+    ON t1.IdCliente = t8.idCliente AND
+    t8.rnDia = 1
 )
 
-
-SELECT * FROM tb_trasacoes
-ORDER BY idCliente
+SELECT * FROM tb_join
