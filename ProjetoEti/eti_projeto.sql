@@ -88,7 +88,11 @@ tb_join AS (
     SELECT
             t1.*,
             t2.idadeBase,
-            t3.DescNomeProduto AS produtoMaisConsumidoVida
+            t3.DescNomeProduto AS produtoMaisConsumidoVida,
+            t4.DescNomeProduto AS produtos56,
+            t5.DescNomeProduto AS produtos28,
+            t6.DescNomeProduto AS produto14,
+            t7.DescNomeProduto AS produto7
 
     FROM tb_sumario_transacoes AS t1
 
@@ -98,9 +102,23 @@ tb_join AS (
     LEFT JOIN tb_cliente_produto_rn AS t3
     ON t1.idCliente = t3.idCliente AND t3.rankingVida = 1
 
+    LEFT JOIN tb_cliente_produto_rn AS t4
+    ON t1.idCliente = t4.idCliente AND
+    t4.ranking56 = 1
 
+    LEFT JOIN tb_cliente_produto_rn AS t5
+    ON t1.idCliente = t5.idCliente AND
+    t5.ranking28 = 1
+
+    LEFT JOIN tb_cliente_produto_rn AS t6
+    ON t1.idCliente = t6.idCliente AND
+    t6.ranking14 = 1
+
+    LEFT JOIN tb_cliente_produto_rn AS t7
+    ON t1.idCliente = t7.idCliente AND
+    t7.ranking7 = 1
 )
 
 
-SELECT * FROM tb_join
+SELECT * FROM tb_trasacoes
 ORDER BY idCliente
