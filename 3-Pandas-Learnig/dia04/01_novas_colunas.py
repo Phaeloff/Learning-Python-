@@ -40,3 +40,11 @@ df["qtdePontos"].describre()
 df["logPontos"] = np.log(df["qtdePontos"]+1 )
 df["logPontos"].describe()
 
+# %%
+
+import matplotlib.pyplot as plt
+
+plt.hist(df["logPontos"])
+plt.grid(True)
+plt.show()
+
