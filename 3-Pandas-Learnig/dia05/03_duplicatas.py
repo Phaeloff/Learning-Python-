@@ -9,7 +9,13 @@ df = pd.DataFrame({
     "sobrenome": ['calvo', 'calvo', 'ataide', 'ataide', 'silva', 'silva', 'silva'],
 })
 
-# %%
-
-df.drop_duplicates()
 df
+# %% - tirar as linhas repetidas.
+
+df.drop_duplicates(keep='last')
+df
+
+# %% - pegar o nome e sobrenome para retirar linhas repetidas
+df.drop_duplicates(subset=["nome", "sobrenome"])
+df
+
