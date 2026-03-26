@@ -27,5 +27,31 @@ print("Terceiro Quartil", quartil_3)
 Maximo = df["qtdPontos"].max()
 print("Maximo:", Maximo)
 
-# %% - forma reduzida.
+# - variancia
+variancia = df["qtdPontos"].var()
+print("Variância:", variancia)
+
+# - desvio padrão
+desvio_padrao = df["qtdPontos"].std()
+print("Desvio Padrão", desvio_padrao)
+
+# - amplitude
+amplitude = df['qtdPontos'].max() - df["qtdPontos"].min()
+print("Amplitude:", amplitude)
+
 df.describe()
+# %% - forma reduzida.
+
+print("\n\n############\n")
+print("Estatisticas de Posição para usuários:\n")
+
+usuarios = (df.groupby(["idUsuario"])
+                .agg({
+            "idTransacao":"count",
+            "qtdPontos": "sum",
+                }).reset_index()
+            )
+# %%
+
+summario = usuarios[['idTransacao', 'qtdPontos']].describe()
+print(summario.to_string())
